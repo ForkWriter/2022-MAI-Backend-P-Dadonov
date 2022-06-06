@@ -4,93 +4,122 @@
 3.  Создан и запущен с помощью gunicorn файл простейшего WSGI-приложения(Расположено в папке gunicorn)
 4.  Nginx настроен на проксирование запросов на сервер gunicorn (Файлы Default и nginx.conf)
 5.  Проведено тестирование производительности с помощью ab
-    $ ab -n 10 -c 2 -t 1 -v 2 http://192.168.56.102/public/index.html
+    $ ab -n 10 -c 2 -t 1 -v 2 http://192.168.1.37/public/index.html
+    Finished 16617 requests
+
+    Server Software:        nginx/1.18.0
+    Server Hostname:        192.168.1.37
+    Server Port:            80
+
+    Document Path:          /public/index.html
+    Document Length:        192 bytes
+
     Concurrency Level:      2
     Time taken for tests:   1.004 seconds
-    Complete requests:      1340
+    Complete requests:      16617
     Failed requests:        0
-    Total transferred:      580220 bytes
-    HTML transferred:       257280 bytes
-    Requests per second:    1334.74 [#/sec] (mean)
-    Time per request:       1.498 [ms] (mean)
-    Time per request:       0.749 [ms] (mean, across all concurrent requests)
-    Transfer rate:          564.40 [Kbytes/sec] received
+    Total transferred:      7195594 bytes
+    HTML transferred:       3190656 bytes
+    Requests per second:    16551.08 [#/sec] (mean)
+    Time per request:       0.121 [ms] (mean)
+    Time per request:       0.060 [ms] (mean, across all concurrent requests)
+    Transfer rate:          6999.07 [Kbytes/sec] received
 
     Connection Times (ms)
-                min  mean[+/-sd] median   max
-    Connect:        0    0   0.7      0      20
-    Processing:     0    1   2.6      0      38
-    Waiting:        0    1   1.8      0      38
-    Total:          0    1   2.7      0      38
+                  min  mean[+/-sd] median   max
+    Connect:        0    0   0.5      0      20
+    Processing:     0    0   0.5      0      20
+    Waiting:        0    0   0.0      0       1
+    Total:          0    0   0.6      0      20
 
     Percentage of the requests served within a certain time (ms)
-    50%      0
-    66%      1
-    75%      1
-    80%      2
-    90%      4
-    95%      6
-    98%      9
-    99%     12
-    100%     38 (longest request)
+      50%      0
+      66%      0
+      75%      0
+      80%      0
+      90%      0
+      95%      0
+      98%      0
+      99%      0
+     100%     20 (longest request)
 
-    $ ab -n 10 -c 2 -t 1 -v 2 http://192.168.56.102/backend
+
+    $ ab -n 10 -c 2 -t 1 -v 2 http://192.168.1.37/backend
+    Finished 16778 requests
+
+    Server Software:        nginx/1.18.0
+    Server Hostname:        192.168.1.37
+    Server Port:            80
+
+    Document Path:          /backend
+    Document Length:        178 bytes
+
     Concurrency Level:      2
-    Time taken for tests:   1.001 seconds
-    Complete requests:      1694
+    Time taken for tests:   1.009 seconds
+    Complete requests:      16778
     Failed requests:        0
-    Non-2xx responses:      1694
-    Total transferred:      655578 bytes
-    HTML transferred:       301532 bytes
-    Requests per second:    1692.53 [#/sec] (mean)
-    Time per request:       1.182 [ms] (mean)
-    Time per request:       0.591 [ms] (mean, across all concurrent requests)
-    Transfer rate:          639.66 [Kbytes/sec] received
+    Non-2xx responses:      16779
+    Total transferred:      6459915 bytes
+    HTML transferred:       2986662 bytes
+    Requests per second:    16626.96 [#/sec] (mean)
+    Time per request:       0.120 [ms] (mean)
+    Time per request:       0.060 [ms] (mean, across all concurrent requests)
+    Transfer rate:          6251.72 [Kbytes/sec] received
 
     Connection Times (ms)
-                min  mean[+/-sd] median   max
-    Connect:        0    0   2.4      0      68
-    Processing:     0    1   2.2      0      38
-    Waiting:        0    0   1.3      0      38
-    Total:          0    1   3.3      0      71
+                  min  mean[+/-sd] median   max
+    Connect:        0    0   0.4      0      19
+    Processing:     0    0   0.4      0      19
+    Waiting:        0    0   0.0      0       1
+    Total:          0    0   0.6      0      19
 
     Percentage of the requests served within a certain time (ms)
-    50%      0
-    66%      1
-    75%      1
-    80%      1
-    90%      3
-    95%      5
-    98%      7
-    99%     10
-    100%     71 (longest request)
+      50%      0
+      66%      0
+      75%      0
+      80%      0
+      90%      0
+      95%      0
+      98%      0
+      99%      0
+     100%     19 (longest request)
+
 
     $ ab -n 10 -c 2 -t 1 -v 2 http://127.0.0.1:8000/
+    Finished 11497 requests
+
+    Server Software:        gunicorn
+    Server Hostname:        127.0.0.1
+    Server Port:            8000
+
+    Document Path:          /
+    Document Length:        21 bytes
+
     Concurrency Level:      2
-    Time taken for tests:   1.001 seconds
-    Complete requests:      346
+    Time taken for tests:   1.000 seconds
+    Complete requests:      11497
     Failed requests:        0
-    Total transferred:      55499 bytes
-    HTML transferred:       7266 bytes
-    Requests per second:    345.81 [#/sec] (mean)
-    Time per request:       5.784 [ms] (mean)
-    Time per request:       2.892 [ms] (mean, across all concurrent requests)
-    Transfer rate:          54.17 [Kbytes/sec] received
+    Total transferred:      1839520 bytes
+    HTML transferred:       241437 bytes
+    Requests per second:    11496.57 [#/sec] (mean)
+    Time per request:       0.174 [ms] (mean)
+    Time per request:       0.087 [ms] (mean, across all concurrent requests)
+    Transfer rate:          1796.34 [Kbytes/sec] received
 
     Connection Times (ms)
-                min  mean[+/-sd] median   max
-    Connect:        0    0   0.2      0       1
-    Processing:     0    6   4.9      4      37
-    Waiting:        0    2   3.2      1      29
-    Total:          0    6   4.9      4      37
+                  min  mean[+/-sd] median   max
+    Connect:        0    0   0.0      0       0
+    Processing:     0    0   0.1      0       2
+    Waiting:        0    0   0.1      0       2
+    Total:          0    0   0.1      0       2
 
     Percentage of the requests served within a certain time (ms)
-    50%      4
-    66%      6
-    75%      8
-    80%      8
-    90%     12
-    95%     14
-    98%     21
-    99%     24
-    100%     37 (longest request)
+      50%      0
+      66%      0
+      75%      0
+      80%      0
+      90%      0
+      95%      0
+      98%      0
+      99%      0
+     100%      2 (longest request)
