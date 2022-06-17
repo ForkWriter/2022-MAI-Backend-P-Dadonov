@@ -1,0 +1,7 @@
+asgiref==3.5.2
+Django==4.0
+iniconfig==1.1.1
+py==1.11.0
+pyparsing==3.0.9
+sqlparse==0.4.2
+tomli==2.0.1
